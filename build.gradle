@@ -12,20 +12,20 @@ defaultTasks   'jar'
 //also available is check which will compile and run the tests
 apply plugin: 'java'
 
-task testTask << {
+/*task testTask << {
     println 'This is the test'
 }
-
+*/
 
 //set up some variables
-sourceCompatibility = 1.8
-version = '1.0'
+/*sourceCompatibility = 1.8
+version = '1.0'*/
 
 //Define the contents of the jar file
 jar {
   manifest {
      attributes  'Implementation-Title' : 'Gradle Quickstart' ,
-                 'Implementation-Version' : version,
+                 //'Implementation-Version' : version,
                  'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
                  'Class-Path': '../../lib/resources.jar'
     }
@@ -36,6 +36,6 @@ dependencies {
 }
 
 //setup a location for repositories of any libraries that need to be downloaded
-repositories {
+/*repositories {
    mavenCentral()
-}
+}*/
