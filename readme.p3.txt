@@ -1,2 +1,2 @@
 Caleb Kim
-calebtkim@gmail.com
+calebtkim@gatech.edu
