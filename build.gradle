@@ -1,5 +1,5 @@
 //Set a default task, so if you don't provide any, these will be executed.
-defaultTasks   'task1', 'task2'
+defaultTasks   'testTask'
 
 //Import a bunch of Java related tasks to help you
 //By default production code should be in src/main/java
@@ -20,29 +20,35 @@ apply plugin: 'pmd'
 
 apply plugin: 'application'
 
+task testTask << {
+    println 'This is the test'
+}
+
 //Define a simple task ourselves
-task hello << {
-   println 'Hello World'
+task compileJava << {
+   println 'Compile Java'
 }
 
 //Define a simple task that depends on another task
-task intro(dependsOn: hello) << {
-   println 'I am gradle'
+task compileTest(dependsOn: compileJava) << {
+   println 'Compile Test'
 }
 
-task runp1(dependsOn:build)<< {
-   mainClassName = "HelloWorld"
+task javadoc(dependsOn: compileJava)<< {
+   mainClassName = "SomethingIDK"
 }
 //Define a task
-task task1 << {
-	 String aString = "SomE DiFFerEnt CAse ChARs"
-	 println "Original String: " + aString
-	 println "All Upper: " + aString.toUpperCase()
+task clean << {
+  doLast{
+	   String aString = "SomE DiFFerEnt CAse ChARs"
+	   println "Original String: " + aString
+	   println "All Upper: " + aString.toUpperCase()
+  }
 }
 
 //Define another task
-task task2 << {
-    println 'Task 2'
+task jar << {
+    println 'jar'
 }
 
 //set up some variables
