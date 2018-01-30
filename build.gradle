@@ -12,49 +12,27 @@ defaultTasks   'jar'
 //also available is check which will compile and run the tests
 apply plugin: 'java'
 
-apply plugin: 'findbugs'
-
-apply plugin: 'checkstyle'
-
-apply plugin: 'pmd'
-
-apply plugin: 'application'
-
 task testTask << {
     println 'This is the test'
 }
 
-//Define a simple task ourselves
-task compileJava << {
-   println 'Compile Java'
-}
-
-//Define a simple task that depends on another task
-task compileTest(dependsOn: compileJava) << {
-   println 'Compile Test'
-}
-
-task javadoc(dependsOn: compileJava)<< {
-   mainClassName = "SomethingIDK"
-}
 
 //set up some variables
 sourceCompatibility = 1.8
 version = '1.0'
-mainClassName='edu.gatech.oad.antlab.pkg1.AntLabMain'
 
 //Define the contents of the jar file
 jar {
   manifest {
      attributes  'Implementation-Title' : 'Gradle Quickstart' ,
                  'Implementation-Version' : version,
-                 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain' 
+                 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+                 'Class-Path': '../../lib/resources.jar'
     }
 }
 
 dependencies {
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.7.Final'
-	  testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile files('lib/resources.jar')
 }
 
 //setup a location for repositories of any libraries that need to be downloaded
