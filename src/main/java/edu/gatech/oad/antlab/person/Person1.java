@@ -5,7 +5,7 @@ package edu.gatech.oad.antlab.person;
  *  returns their name and a
  *  modified string 
  *  
- *  @author Jong Yoon
+ *  @author Jong Yoon Kim
  *  @version 1.1
  */
 public class Person1 {
@@ -31,16 +31,12 @@ public class Person1 {
 	 */
 	private String calc(String input) {
 		String rotation = "";
-		int length = input.length();
-		if (length < 3) {
-		    input;
+		if (input.length() < 3) {
+		    return input;
         }
-		for(int i = 2; i<length;i++) {
-			rotation += input.charAt(i);
-		}
-		rotation += input.charAt(0);
-		rotation += input.charAt(1);
-		return rotation;
+		String temp = input.substring(2);
+		temp = temp + input.substring(0,2);
+		return temp;
 	}
 	
 	/**
